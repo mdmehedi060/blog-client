@@ -1,0 +1,44 @@
+[
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "subscribedDate": "2023-11-06",
+      "profileImage": "https://i.ibb.co/yS2CPPz/news-1.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "email": "jane.smith@example.com",
+      "subscribedDate": "2023-11-06",
+      "profileImage": "https://i.ibb.co/jLPHZRH/news-2.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Mike Johnson",
+      "email": "mike.johnson@example.com",
+      "subscribedDate": "2023-11-05",
+      "profileImage": "https://i.ibb.co/hsK7tsS/news-3.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Susan Davis",
+      "email": "susan.davis@example.com",
+      "subscribedDate": "2023-11-05",
+      "profileImage": "https://i.ibb.co/wMZC1ww/news-4.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Robert Wilson",
+      "email": "robert.wilson@example.com",
+      "subscribedDate": "2023-11-04",
+      "profileImage": "https://i.ibb.co/WcdNyQN/news-5.jpg"
+    },
+    {
+        "id": 6,
+        "name": "Emily White",
+        "email": "emily.white@example.com",
+        "subscribedDate": "2023-11-07",
+        "profileImage": "https://i.ibb.co/FwhPtm9/news-6.jpg"
+      }
+  ]

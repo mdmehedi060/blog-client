@@ -1,49 +1,52 @@
 
-import Swal from 'sweetalert2'
+import { useLoaderData } from 'react-router-dom';
+import { swal } from 'sweetalert2';
 
+const UpdateBlog = () => {
+    const blog = useLoaderData();
+    const { _id, name, quantity, supplier, test, category, details, photo } = blog;
 
-const AddBlog = () => {
-  const handleAddBlog=event=>{
-    event.preventDefault();
-
-    const form=event.target;
-
-    const title= form.title.value;
-    const category= form.category.value;
-    const shortdiscription= form.shortdiscription.value;
-    const longdiscription= form. longdiscription.value;
-    const photo= form.photo.value;
-   const newBlog={title,category,shortdiscription,longdiscription,photo}
-   console.log(newBlog);
-
-//    send data to the server
-fetch('http://localhost:5000/blog',{
-    method:'POST',
-    headers:{
-        'content-type' : 'application/json'
-    },
-    body:JSON.stringify(newBlog)
-})
-.then(res=>res.json())
-.then(data=>{
-    console.log(data);
-    if(data.insertedId){
- 
-      Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: "Your work has been saved",
-        showConfirmButton: false,
-        timer: 1500
-      });
+    const handleUpdateBlog=event=>{
+        event.preventDefault();
+    
+        const form=event.target;
+    
+        const name= form.name.value;
+        const quantity= form.quantity.value;
+        const supplier= form.supplier.value;
+        const test= form.test.value;
+        const category= form.category.value;
+        const details= form.details.value;
+        const photo= form.photo.value;
+       const updetedCoffee={name,quantity,supplier,test,category,details,photo}
+       console.log(updetedCoffee);
+    
+    //    send data to the server
+    fetch(`http://localhost:5000/coffee/${_id}`,{
+        method:'PUT',
+        headers:{
+            'content-type' : 'application/json'
+        },
+        body:JSON.stringify(updetedCoffee)
+    })
+    .then(res=>res.json())
+    .then(data=>{
+        console.log(data);
+        if(data.modifiedCount > 0){
+          swal.fire({
+            title: 'Success!',
+            text: 'Coffee Updated Successfully',
+            icon: 'success',
+            confirmButtonText: 'Cool'
+          })
+        }
+    })
+    
     }
-})
-
-}
     return (
       <div className="bg-[#F4F3F0] p-24 mt-6 mb-8">
-      <h2 className="text-3xl font-extrabold">Add a Blog</h2>
-      <form onSubmit={handleAddBlog}>
+      <h2 className="text-3xl font-extrabold">Update a Blog</h2>
+      <form onSubmit={handleUpdateBlog}>
         {/* form name & quantity row */}
         <div className="md:flex mb-8">
           <div className="form-control md:w-1/2">
@@ -121,10 +124,10 @@ fetch('http://localhost:5000/blog',{
        
         </div>
         
-        <input className="btn btn-block bg-orange-400 text-white" type="submit" value="Submit"  />
+        <input className="btn btn-block bg-orange-400 text-white" type="submit" value="Update Blog"  />
       </form>
     </div>
     );
 };
 
-export default AddBlog;
+export default UpdateBlog;

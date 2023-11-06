@@ -1,9 +1,14 @@
 
+import Blog from '../Blog/Blog';
+import NewsLetter from '../NewsLetter/NewsLetter';
+import Banner from './Banner';
 
 const Home = () => {
     return (
         <div>
-            <h2>This Home page</h2>
+            <Banner></Banner>
+            <Blog></Blog>
+            <NewsLetter></NewsLetter>
         </div>
     );
 };
