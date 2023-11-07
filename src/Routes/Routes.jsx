@@ -58,9 +58,9 @@ const router = createBrowserRouter([
         },
        
         {
-          path:'/updatedblog/:_id',
+          path:'/updatedblog/:id',
           element:<Privateroute><UpdateBlog></UpdateBlog></Privateroute>,
-          loader: ({ params }) => fetch(`http://localhost:5000/blogadd/${params._id}`),
+          loader: ({ params }) => fetch(`http://localhost:5000/blog/${params.id}`),
         },
       ]
     },

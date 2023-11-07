@@ -4,7 +4,7 @@ import WishlistCard from "./WishlistCard";
 
 const Wishlist = () => {
   const wishlists = useLoaderData()
-  console.log(wishlists);
+  // console.log(wishlists);
   
 
 

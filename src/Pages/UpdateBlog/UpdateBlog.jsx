@@ -1,44 +1,42 @@
 
 import { useLoaderData } from 'react-router-dom';
-import { swal } from 'sweetalert2';
+import Swal from 'sweetalert2';
+
 
 const UpdateBlog = () => {
     const blog = useLoaderData();
-    const { _id, name, quantity, supplier, test, category, details, photo } = blog;
+    const { _id,title,category,shortdiscription,longdiscription,photo } = blog;
 
     const handleUpdateBlog=event=>{
         event.preventDefault();
     
         const form=event.target;
     
-        const name= form.name.value;
-        const quantity= form.quantity.value;
-        const supplier= form.supplier.value;
-        const test= form.test.value;
-        const category= form.category.value;
-        const details= form.details.value;
-        const photo= form.photo.value;
-       const updetedCoffee={name,quantity,supplier,test,category,details,photo}
-       console.log(updetedCoffee);
+        const title= form.title.value;
+    const category= form.category.value;
+    const shortdiscription= form.shortdiscription.value;
+    const longdiscription= form. longdiscription.value;
+    const photo= form.photo.value;
+   const updateBlog={title,category,shortdiscription,longdiscription,photo}
+   console.log(updateBlog);
     
     //    send data to the server
-    fetch(`http://localhost:5000/coffee/${_id}`,{
+    fetch(`http://localhost:5000/blog/${_id}`,{
         method:'PUT',
         headers:{
             'content-type' : 'application/json'
         },
-        body:JSON.stringify(updetedCoffee)
+        body:JSON.stringify(updateBlog)
     })
     .then(res=>res.json())
     .then(data=>{
         console.log(data);
         if(data.modifiedCount > 0){
-          swal.fire({
-            title: 'Success!',
-            text: 'Coffee Updated Successfully',
-            icon: 'success',
-            confirmButtonText: 'Cool'
-          })
+          Swal.fire({
+            title: "Good job!",
+            text: "Blog Update Successfully!",
+            icon: "success"
+          });
         }
     })
     
@@ -57,6 +55,7 @@ const UpdateBlog = () => {
               <input
                 name="title"
                 type="text"
+                defaultValue={title}
                 placeholder="Title"
                 className="input input-bordered w-full"
               />
@@ -70,6 +69,7 @@ const UpdateBlog = () => {
               <input
                 name="category"
                 type="text"
+                defaultValue={category}
                 placeholder="Category"
                 className="input input-bordered w-full"
               />
@@ -86,6 +86,7 @@ const UpdateBlog = () => {
               <input
                 name="shortdiscription"
                 type="text"
+                defaultValue={shortdiscription}
                 placeholder="Short Discription"
                 className="input input-bordered w-full"
               />
@@ -99,6 +100,7 @@ const UpdateBlog = () => {
               <input
                 name="longdiscription"
                 type="text"
+                defaultValue={longdiscription}
                 placeholder="Long Discription"
                 className="input input-bordered w-full"
               />
@@ -116,6 +118,7 @@ const UpdateBlog = () => {
               <input
                 name="photo"
                 type="text"
+                defaultValue={photo}
                 placeholder="Photo RRL"
                 className="input input-bordered w-full"
               />
