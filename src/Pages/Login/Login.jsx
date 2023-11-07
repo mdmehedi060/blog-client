@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Authcontext } from './../../Providers/AuthProviders';
-import swal from "sweetalert";
+import Swal from "sweetalert2";
+
 
 const Login = () => {
   const {googleSignIn} = useContext(Authcontext);
@@ -27,11 +28,22 @@ const handleLogin = (e) => {
       
       // navigate after login
       navigate(location?.state ? location.state : '/');
-      swal("Good job!", "Your login successfully", "success");
+      
+      Swal.fire({
+        title: "Good job!",
+        text: "Your login successfully!",
+        icon: "success",
+      });
     })
 
     .catch(error=>console.error(error))
-    swal("Error!", "Please Register your Email & Password", "error");
+   
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Please Register your Email & Password!",
+      footer: '<a href="#">Why do I have this issue?</a>',
+    });
   };
 
 const handleGoogle =(e)=>{
@@ -48,7 +60,11 @@ const handleGoogle =(e)=>{
       
     // navigate after login
     navigate(location?.state ? location.state : '/');
-    swal("Good job!", "Your login successfully", "success");
+    Swal.fire({
+      title: "Good job!",
+      text: "Your login successfully!",
+      icon: "success",
+    });
     e.target.reset();
       
   })

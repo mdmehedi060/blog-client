@@ -8,7 +8,7 @@ const Blog = () => {
 const [dataLength,setdataLength]=useState(6);
 const [isShow,setIsShow]= useState(false)
     useEffect(()=>{
-      fetch('http://localhost:5000/blog')
+      fetch('https://assigntment-eleven-server.vercel.app/blog')
       .then(res => res.json())
       .then(data => setBlogs(data));
     },[])

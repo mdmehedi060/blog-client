@@ -21,7 +21,7 @@ const UpdateBlog = () => {
    console.log(updateBlog);
     
     //    send data to the server
-    fetch(`http://localhost:5000/blog/${_id}`,{
+    fetch(`https://assigntment-eleven-server.vercel.app/blog/${_id}`,{
         method:'PUT',
         headers:{
             'content-type' : 'application/json'

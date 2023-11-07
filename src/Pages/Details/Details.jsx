@@ -12,7 +12,7 @@ const Details = () => {
         <div>
             <h2 className="text-4xl text-center font-bold">This is details page</h2>
 
-   <div className="card w-[900px]  bg-base-100 mx-auto mt-6 mb-6 shadow-xl">
+   <div className="card w-96 lg:w-[900px]  bg-base-100 mx-auto mt-6 mb-6 shadow-xl">
         <figure><img className='w-full h-[400px]' src={image} alt="Shoes" /></figure>
         <div className="card-body">
           <h2 className="card-title">Title: {title}</h2>
@@ -28,7 +28,7 @@ const Details = () => {
           </div>
       </form>
       <Link to={`/updatedblog/${_id}`}>
-      <button className="btn btn-accent">Update</button>
+      <button className="btn btn-accent font-bold text-white w-80 lg:ml-64">Update Blog</button>
       </Link>
         </div>
       </div>

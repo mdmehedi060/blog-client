@@ -2,36 +2,23 @@
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Authcontext } from './../../../Providers/AuthProviders';
+import { useContext } from 'react';
 
 const BlogCard = ({blog}) => {
 const {_id,title,image,short_description,category}= blog;
 // console.log(blog);
-
+const {user}=useContext(Authcontext);
+const email=user?.email || "";
 const handleWishlist = (blog) => {
     const { title,image,short_description,category,long_description } = blog;
     const wishListData = {
-        title,image,short_description,category,long_description
+title,image,short_description,category,long_description,email
     };
     console.log(wishListData);
 
-//   fetch("http://localhost:5000/wishlist",{
-//     method:"POST",
-//     headers:{
-//         'content-type': 'application/json'
-//     },
-//     body: JSON.stringify(wishListData)
-//   })
-//   .then(res=>res.json())
-//   .then(data=>{
-//     console.log(data);
-//     Swal.fire({
-//         title: "Good job!",
-//         text: "Added to the Wishlist!",
-//         icon: "success"
-//       });
-//   })
 
-    axios.post("http://localhost:5000/wishlist", wishListData)
+    axios.post("https://assigntment-eleven-server.vercel.app/wishlist", wishListData)
       .then((res) => {
         console.log(res.data);
         Swal.fire({

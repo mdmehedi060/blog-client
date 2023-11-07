@@ -1,11 +1,8 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Authcontext } from './../../Providers/AuthProviders';
-import { useContext } from 'react';
-import { swal } from 'sweetalert';
-
-
-
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { Authcontext } from "./../../Providers/AuthProviders";
+import { useContext } from "react";
+import Swal from "sweetalert2";
 
 const Registation = () => {
   const [registerError, setRegisterError] = useState("");
@@ -13,8 +10,6 @@ const Registation = () => {
   const { createUser } = useContext(Authcontext);
 
   const handleRegister = (e) => {
-
-
     e.preventDefault();
     console.log(e.currentTarget);
     const form = new FormData(e.currentTarget);
@@ -29,26 +24,33 @@ const Registation = () => {
     setSuccesss("");
 
     if (password.length < 6) {
-      swal("error!", "Password should be at least 6 characters", "error");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong!",
+        footer: '<a href="#">Why do I have this issue?</a>',
+      });
       return;
-    } 
-    else if (!/[A-Z]/.test(password)) {
-      swal(
-        "error!",
-        "Your password should have at least one charecter uppercase",
-        "error"
-      );
+    } else if (!/[A-Z]/.test(password)) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong!",
+        footer: '<a href="#">Why do I have this issue?</a>',
+      });
       return;
     }
-   
 
     // createUser
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
         setSuccesss();
-        swal("Good job!", "Your registetion successfully", "success");
-
+        Swal.fire({
+          title: "Good job!",
+          text: "You clicked the button!",
+          icon: "success",
+        });
       })
       .catch((error) => {
         console.error(error);

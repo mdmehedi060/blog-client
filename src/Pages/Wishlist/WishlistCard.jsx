@@ -18,7 +18,7 @@ Swal.fire({
 }).then((result) => {
   if (result.isConfirmed) {
     console.log('delete confirmed');
-fetch(`http://localhost:5000/wishlist/${_id}`,{
+fetch(`https://assigntment-eleven-server.vercel.app/wishlist/${_id}`,{
   method:"DELETE",
 })
 .then(res=>res.json())
